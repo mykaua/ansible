@@ -1,5 +1,8 @@
 ---
 - name: Install zabbix agent on Centos
+  gather_facts: no
+  pre_tasks:
+    - raw: sudo apt-get -y install python-simplejson
 
   tasks:
     - name: Install a .deb package from the internet.

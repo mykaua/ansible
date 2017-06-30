@@ -7,7 +7,7 @@
   tasks:
     - name: install the zabbix-agent  rpm from a remote repo
       yum:
-        name: "{{repo_centos6}}"
+        name: {{repo_centos6}}
         state: present
       when: ansible_distribution == 'CentOS' and ansible_distribution_version == "6"
 

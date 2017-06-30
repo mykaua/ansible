@@ -1,0 +1,17 @@
+---
+- name: Install Zabbix agent
+  hosts: all
+  vars:
+
+
+  tasks:
+#    - name: Install epel repo
+#      package: name=epel-release state=installed
+#      when: ansible_distribution == 'CentOS' or ansible_distribution == 'Red Hat Enterprise Linux'
+
+#    - name:
+- include: centos.yml
+  when: ansible_distribution == 'CentOS'
+
+- include: ubuntu.yml
+  when: ansible_distribution == 'Ubuntu'

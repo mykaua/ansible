@@ -1,0 +1,9 @@
+PidFile=/var/run/zabbix/zabbix_agentd.pid
+LogFile=/var/log/zabbix/zabbix_agentd.log
+LogFileSize=0
+EnableRemoteCommands=1
+Server= 
+Hostname=Ult_{{ansible_host}}
+Timeout=10
+AllowRoot=0
+Include=/etc/zabbix/zabbix_agentd.d/

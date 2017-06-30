@@ -1,5 +1,5 @@
 ---
-- name: Install zabbix agent on Centos
+- name: Install zabbix agent on Ubuntu
   gather_facts: no
   pre_tasks:
     - raw: sudo apt-get -y install python-simplejson
@@ -8,26 +8,3 @@
     - name: Install a .deb package from the internet.
       apt:
         deb: http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix/zabbix-agent_3.0.3-2+xenial_amd64.deb
-
-    - name: Copy zabbix-agent config file
-      template: src=files/zabbix_agentd.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
-      notify: Restart zabbix
-
-    - name: change add direcories for zabbix
-      file:
-        path: /usr/local/zabbix
-        state: directory
-        owner: zabbix
-        group: zabbix
-        mode: 0755
-      notify: Restart zabbix
-
-    -meta: flush_handlers
-
-    - name: Ensure zabbix-agent is started and enabled
-        service: name=zabbix-agent state=started enabled=yes
-
-
-  handlers:
-    -name: Restart zabbix
-    service: name=zabbix-agent state=restarted

@@ -7,34 +7,34 @@
   tasks:
     - name: install the zabbix-agent  rpm from a remote repo
       yum:
-        name: {{repo_centos6}}
+        name: "{{repo_centos6}}"
         state: present
       when: ansible_distribution == 'CentOS' and ansible_distribution_version == "6"
 
     - yum:
-        name: {{repo_centos7}}
+        name: "{{repo_centos7}}"
         state: present
       when: ansible_distribution == 'CentOS' and ansible_distribution_version == "7"
 
     - name: Copy zabbix-agent config file
-        template: src=files/zabbix_agentd.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
-        notify: Restart zabbix
+      template: src=files/zabbix_agentd.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
+      notify: Restart zabbix
 
     - name: change add direcories for zabbix
-        file:
-          path: /usr/local/zabbix
-          state: directory
-          owner: zabbix
-          group: zabbix
-          mode: 0755
-        notify: Restart zabbix
+      file:
+        path: /usr/local/zabbix
+        state: directory
+        owner: zabbix
+        group: zabbix
+        mode: 0755
+      notify: Restart zabbix
 
-    -meta: flush_handlers
+    - meta: flush_handlers
 
     - name: Ensure zabbix-agent is started and enabled
-        service: name=zabbix-agent state=started enabled=yes
+      service: name=zabbix-agent state=started enabled=yes
 
 
   handlers:
-    -name: Restart zabbix
+    - name: Restart zabbix
       service: name=zabbix-agent state=restarted

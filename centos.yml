@@ -1,13 +1,14 @@
 ---
-- name: Install zabbix agent on Centos
-  tasks:
-    - name: install the zabbix-agent  rpm from a remote repo
-      yum:
-        name: "{{repo_centos6}}"
-        state: present
-      when: ansible_distribution == 'CentOS' and ansible_distribution_version == "6"
+- debug: var=ansible_distribution_version
+  tags: tst
+- name: install the zabbix-agent rpm from a remote repo
+  yum:
+    name: "{{repo_centos6}}"
+    state: present
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == "6"
 
-    - yum:
-        name: "{{repo_centos7}}"
-        state: present
-      when: ansible_distribution == 'CentOS' and ansible_distribution_version == "7"
+- name: Install CentOS repo
+  yum:
+    name: "{{repo_centos7}}"
+    state: present
+  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == "7"

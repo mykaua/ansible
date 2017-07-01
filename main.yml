@@ -2,10 +2,10 @@
 - name: Install Zabbix agent
   hosts: all
   vars:
-    repo_centos7: "http://repo.zabbix.com/zabbix/3.0/rhel/7/x86_64/zabbix-release-3.0-1.el7.noarch.rpm"
+    repo_centos7: "http://repo.zabbix.com/zabbix/3.0/rhel/7/x86_64/zabbix-agent-3.0.0-1.el7.x86_64.rpm"
     repo_centos6: "http://repo.zabbix.com/zabbix/3.2/rhel/6/x86_64/zabbix-agent-3.2.1-1.el6.x86_64.rpm"
     repo_ubuntu_16: "http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix/zabbix-agent_3.0.3-2+xenial_amd64.deb"
-    repo_ubuntu_14: "hello-world"
+    repo_ubuntu_14: "http://repo.zabbix.com/zabbix/3.0/ubuntu/pool/main/z/zabbix-release/zabbix-release_3.0-1+trusty_all.deb"
 
 
   tasks:
@@ -28,12 +28,12 @@
         group: zabbix
         mode: 0755
 
-  #- meta: flush_handlers
+    - meta: flush_handlers
 
-  #- name: Ensure zabbix-agent is started and enabled
-  #  service: name=zabbix-agent state=started enabled=yes
+    - name: Ensure zabbix-agent is started and enabled
+      service: name=zabbix-agent state=started enabled=yes
 
 
-#handlers:
-#  - name: Restart zabbix
-#    service: name=zabbix-agent state=restarted
+  handlers:
+    - name: Restart zabbix
+      service: name=zabbix-agent state=restarted

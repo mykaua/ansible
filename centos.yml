@@ -12,3 +12,18 @@
     name: "{{repo_centos7}}"
     state: present
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == "7"
+
+
+#Using download repo and install
+#- name: Centos 7 download repo
+#  get_url:
+#    url: "{{repo_centos7}}"
+#    dest: /root/zabbix-agent-3.2.1-1.el6.x86_64.rpm
+#    mode: 0644
+#    when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == "7"
+
+#- name: Centos 7 install repo:
+#  yum:
+#    name: /root/zabbix-agent-3.2.1-1.el6.x86_64.rpm
+#    state: present
+#  when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == "7"

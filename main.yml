@@ -15,11 +15,6 @@
     - include: ubuntu.yml
       when: ansible_distribution == 'Ubuntu'
 
-
-    - name: Copy zabbix-agent config file
-      template: src=files/zabbix_agentd.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
-
-
     - name: change add direcories for zabbix
       file:
         path: /usr/local/zabbix
@@ -27,6 +22,12 @@
         owner: zabbix
         group: zabbix
         mode: 0755
+      notify: Restart zabbix
+
+
+    - name: Copy zabbix-agent config file
+      template: src=files/zabbix_agentd.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
+      notify: Restart zabbix
 
     - meta: flush_handlers
 

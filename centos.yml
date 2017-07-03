@@ -1,15 +1,15 @@
 ---
 - debug: var=ansible_distribution_version
   tags: tst
-- name: install the zabbix-agent rpm from a remote repo
+- name: install the zabbix-agent from rpm for Centos 6
   yum:
-    name: "{{repo_centos6}}"
+    name: "{{repo_centos_6}}"
     state: present
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == "6"
 
-- name: Install CentOS repo
+- name: Install the zabbix-agent from rpm for Centos7
   yum:
-    name: "{{repo_centos7}}"
+    name: "{{repo_centos_7}}"
     state: present
   when: ansible_distribution == 'CentOS' and ansible_distribution_major_version == "7"
 

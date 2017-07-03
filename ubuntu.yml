@@ -1,11 +1,11 @@
 ---
-- raw: sudo apt-get -y install python-simplejson
-- name: Install a .deb package from the internet for ubuntu 16.
+- raw: apt-get -y install python-simplejson
+- name: Install a .deb package for Ubuntu 16
   apt:
     deb: "{{repo_ubuntu_16}}"
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version == "16"
 
-- name: Install a deb package Ubuntu 14
+- name: Install a deb package for Ubuntu 14
   apt:
     deb: "{{repo_ubuntu_14}}"
   when: ansible_distribution == 'Ubuntu' and ansible_distribution_major_version == "14"

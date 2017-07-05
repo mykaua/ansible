@@ -1,0 +1,23 @@
+---
+# zabbix tasks
+- name: Install zabbix
+  include: "Install-{{ ansible_distribution }}-{{ansible_distribution_major_version}}.yml"
+
+- name: add direcories for zabbix
+  file:
+    path: /usr/local/zabbix
+    state: directory
+    owner: zabbix
+    group: zabbix
+    mode: 0755
+  notify: Restart zabbix
+
+
+- name: Copy zabbix-agent config file
+  template: src=zabbix_agentd.conf.j2 dest=/etc/zabbix/zabbix_agentd.conf
+  notify: Restart zabbix
+
+- meta: flush_handlers
+
+- name: Ensure zabbix-agent is started and enabled
+  service: name=zabbix-agent state=started enabled=yes

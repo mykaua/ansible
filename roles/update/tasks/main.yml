@@ -1,0 +1,4 @@
+---
+#update servers
+- name: Update services
+  include: "update-{{ ansible_os_family }}.yml"

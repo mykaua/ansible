@@ -1,0 +1,6 @@
+---
+# Update services on RedHat/Centos
+- name: Update services on RedHat/Centos
+  yum:
+    name: '*'
+    state: present

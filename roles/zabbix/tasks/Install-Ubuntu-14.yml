@@ -1,0 +1,5 @@
+---
+# Install zabbix agent on Ubuntu 14
+- name: Install zabbix agent from deb packages
+  apt:
+    deb: "{{repo_ubuntu_14}}"

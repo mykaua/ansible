@@ -1,0 +1,6 @@
+---
+# Install zabbix agent on Ubuntu 16
+- raw: apt-get -y install python-simplejson
+- name: Install zabbix agent from deb packages
+  apt:
+    deb: "{{repo_ubuntu_16}}"

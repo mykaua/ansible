@@ -1,0 +1,7 @@
+---
+- name: Install zabbix-agent with roles playbook
+  hosts: all
+
+  roles:
+    - zabbix
+#    - update

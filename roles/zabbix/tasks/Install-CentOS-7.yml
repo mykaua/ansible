@@ -1,0 +1,6 @@
+---
+# Install Zabbix on Centos 6 from rpm
+- name: Install zabbix-agent
+  yum:
+    name: "{{repo_centos_7}}"
+    state: present

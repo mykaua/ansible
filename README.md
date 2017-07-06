@@ -13,11 +13,13 @@ We have two main playbooks:
 What do you need to change? You need to change a few files:
    1) Add Server List(IPs) to "inventory" file
    2) Add the IP of zabbix-server to config file of agent - zabbix_agentd.conf.j2.
+ 
 
-
-
+===============================================================================
 How to fix the issue(python issue) with ubuntu 16.XX:
-   you can run this command:
-          ansible -m raw -a "apt-get -y install python-simplejson" Ubuntu_hosts
+   1) you can run this command:
+          $ ansible -m raw -a "apt-get -y install python-simplejson" Ubuntu16
 
-Or you can run the "fix_ubuntu16.yml" playbook. Please note: you inventory file should have group ubuntu16!!!
+   2) Or you can run the "fix_ubuntu16.yml" playbook.  
+   PLEASE NOTE: you inventory file should have group ubuntu16!!!
+================================================================================

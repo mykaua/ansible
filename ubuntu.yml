@@ -1,5 +1,4 @@
 ---
-- raw: apt-get -y install python-simplejson
 - name: Install a .deb package for Ubuntu 16
   apt:
     deb: "{{repo_ubuntu_16}}"

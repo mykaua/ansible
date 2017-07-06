@@ -1,0 +1,5 @@
+- name: Fix ubuntu 16
+  hosts: ubuntu16
+  gather_facts: no
+  tasks:
+    - raw: apt-get -y install python-simplejson
